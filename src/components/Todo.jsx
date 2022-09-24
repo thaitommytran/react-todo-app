@@ -1,12 +1,23 @@
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, toggleComplete }) => {
   return (
-    <li className="flex justify-between bg-slate-200 p-4 my-2 capitalize">
+    <li
+      className={`flex justify-between p-4 my-2 capitalize ${
+        todo.completed ? "bg-slate-400" : "bg-slate-200"
+      }`}>
       <div className="flex">
-        <input type="checkbox" />
-        <p className="ml-2 cursor-pointer">{todo}</p>
+        <input
+          onChange={() => toggleComplete(todo)}
+          type="checkbox"
+          checked={todo.completed}
+        />
+        <p
+          onClick={() => toggleComplete(todo)}
+          className={`ml-2 cursor-pointer ${todo.completed && "line-through"}`}>
+          {todo.text}
+        </p>
       </div>
       <button className="cursor-pointer flex items-center">
         {<FaRegTrashAlt />}
