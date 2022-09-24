@@ -1,7 +1,7 @@
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-const Todo = ({ todo, toggleComplete }) => {
+const Todo = ({ todo, toggleComplete, deleteTodo }) => {
   return (
     <li
       className={`flex justify-between p-4 my-2 capitalize ${
@@ -19,7 +19,9 @@ const Todo = ({ todo, toggleComplete }) => {
           {todo.text}
         </p>
       </div>
-      <button className="cursor-pointer flex items-center">
+      <button
+        onClick={() => deleteTodo(todo.id)}
+        className="cursor-pointer flex items-center">
         {<FaRegTrashAlt />}
       </button>
     </li>
